@@ -186,6 +186,7 @@ public class WeatherActivity extends AppCompatActivity {
      * @param weather_id
      */
     public void requestWeather(String weather_id) {
+        this.weather_id = weather_id;
         showProgressDialog();
         String weatherUrl = "http://guolin.tech/api/weather?cityid="+weather_id+"&key=b52d7356607546189dbc60c40caadbdf";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
