@@ -11,7 +11,7 @@ public class Suggestion {
     @SerializedName("comf")
     public Comfort comfort;
 
-    @SerializedName("car")
+    @SerializedName("cw")
     public CarWash carWash;
 
     public Sport  sport;

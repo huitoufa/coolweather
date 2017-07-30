@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.coolweather.android.WeatherActivity">
+<!--  可以看到，首先最外层，布局使用了一个FrameLayout，
+  将背景色设置成  colorPrimary，然后再 FrameLayout中嵌套了一个  ScrollView，
+ 这是因为，天气界面中的内容比较多，使用  ScrollView可以允许我们通过滚动的方式查看屏幕意外的内容。-->
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+
+    <!--  由于ScrollView 的内部只允许一个直接子布局，因此在这里有钱套了一个垂直方向的LinearLayout，
+     然后再 LinearLayout中将刚才定义的所有布局逐个引入
+     这样我们就将天气界面编写完成了-->
+    <ScrollView
+        android:id="@+id/weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <include layout="@layout/title"></include>
+
+            <include layout="@layout/now"></include>
+
+            <include layout="@layout/forecast"></include>
+
+            <include layout="@layout/aqi"></include>
+
+            <include layout="@layout/suggestion"></include>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
